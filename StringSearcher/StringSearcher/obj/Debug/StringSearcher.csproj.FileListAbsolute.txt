@@ -10,3 +10,9 @@ c:\users\jelena\documents\visual studio 2012\Projects\StringSearcher\StringSearc
 E:\GitHub\StringSearcher\StringSearcher\StringSearcher\bin\Debug\StringSearcher.exe.config
 E:\GitHub\StringSearcher\StringSearcher\StringSearcher\obj\Debug\StringSearcher.exe
 E:\GitHub\StringSearcher\StringSearcher\StringSearcher\obj\Debug\StringSearcher.pdb
+E:\GitHub\StringSearcher\StringSearcher\StringSearcher\bin\Debug\StringSearcher.exe
+E:\GitHub\StringSearcher\StringSearcher\StringSearcher\bin\Debug\StringSearcher.pdb
+E:\GitHub\StringSearcher\StringSearcher\StringSearcher\obj\Debug\StringSearcher.csprojResolveAssemblyReference.cache
+E:\GitHub\StringSearcher\StringSearcher\StringSearcher\obj\Debug\StringSearcher.MainForm.resources
+E:\GitHub\StringSearcher\StringSearcher\StringSearcher\obj\Debug\StringSearcher.Properties.Resources.resources
+E:\GitHub\StringSearcher\StringSearcher\StringSearcher\obj\Debug\StringSearcher.csproj.GenerateResource.Cache

@@ -35,7 +35,7 @@ namespace StringSearcher
 
         public List<int> Search(String pattern, String text)
         {
-            if (text.Length < pattern.Length)
+            if (text.Length < pattern.Length || pattern.Length == 0)
                 return start_indexex;
 
             int b_to_power_m_mod_M = 1;                 //B^(m-1) % M - ova vrednost je potreba za racunanje svakog narednog hesa dela teksta

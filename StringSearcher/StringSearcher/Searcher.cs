@@ -9,5 +9,6 @@ namespace StringSearcher
     interface Searcher
     {
         List<int> Search(String pattern, String text);
+        void ClearIndexes();
     }
 }

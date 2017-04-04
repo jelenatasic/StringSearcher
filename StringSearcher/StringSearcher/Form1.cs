@@ -14,6 +14,7 @@ namespace StringSearcher
     {
         NaiveSearcher naive_searcher;
         RabinKarpSearcher rabin_karp_searcher;
+        KnuthMorrisPrattSearcher knuth_morris_pratt_searcher;
         List<int> start_indexes;
 
         public MainForm()
@@ -21,6 +22,7 @@ namespace StringSearcher
             InitializeComponent();
             naive_searcher = new NaiveSearcher();
             rabin_karp_searcher = new RabinKarpSearcher();
+            knuth_morris_pratt_searcher = new KnuthMorrisPrattSearcher();
             start_indexes = new List<int>();
         }
 
@@ -28,8 +30,9 @@ namespace StringSearcher
         {
             //start_indexes = naive_searcher.Search(textBox_Pattern.Text, richTextBox_Text.Text);
 
-            start_indexes = rabin_karp_searcher.Search(textBox_Pattern.Text, richTextBox_Text.Text);
+           // start_indexes = rabin_karp_searcher.Search(textBox_Pattern.Text, richTextBox_Text.Text);
 
+            start_indexes = knuth_morris_pratt_searcher.Search(textBox_Pattern.Text, richTextBox_Text.Text);
 
             richTextBox_Text.Select(0, richTextBox_Text.Text.Length);
             richTextBox_Text.SelectionColor = Color.Black;
