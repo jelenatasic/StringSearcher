@@ -1,0 +1,12 @@
+c:\users\jelena\documents\visual studio 2012\Projects\StringSearcher\StringSearcher\bin\Debug\StringSearcher.exe.config
+c:\users\jelena\documents\visual studio 2012\Projects\StringSearcher\StringSearcher\bin\Debug\StringSearcher.exe
+c:\users\jelena\documents\visual studio 2012\Projects\StringSearcher\StringSearcher\bin\Debug\StringSearcher.pdb
+c:\users\jelena\documents\visual studio 2012\Projects\StringSearcher\StringSearcher\obj\Debug\StringSearcher.Properties.Resources.resources
+c:\users\jelena\documents\visual studio 2012\Projects\StringSearcher\StringSearcher\obj\Debug\StringSearcher.csproj.GenerateResource.Cache
+c:\users\jelena\documents\visual studio 2012\Projects\StringSearcher\StringSearcher\obj\Debug\StringSearcher.exe
+c:\users\jelena\documents\visual studio 2012\Projects\StringSearcher\StringSearcher\obj\Debug\StringSearcher.pdb
+c:\users\jelena\documents\visual studio 2012\Projects\StringSearcher\StringSearcher\obj\Debug\StringSearcher.csprojResolveAssemblyReference.cache
+c:\users\jelena\documents\visual studio 2012\Projects\StringSearcher\StringSearcher\obj\Debug\StringSearcher.MainForm.resources
+E:\GitHub\StringSearcher\StringSearcher\StringSearcher\bin\Debug\StringSearcher.exe.config
+E:\GitHub\StringSearcher\StringSearcher\StringSearcher\obj\Debug\StringSearcher.exe
+E:\GitHub\StringSearcher\StringSearcher\StringSearcher\obj\Debug\StringSearcher.pdb
