@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StringSearcher
 {
-    class NaiveSearcher
+    class NaiveSearcher : Searcher
     {
         List<int> start_indexex;    //lista pamti pozicije unutar text-a na kojima pocinje pattern
 
