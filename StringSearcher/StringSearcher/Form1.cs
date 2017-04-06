@@ -35,7 +35,7 @@ namespace StringSearcher
 
             panel_RobinKarpSimulation.Visible = false;
             panel_KnuthMorrisPrattSimulation.Visible = false;
-            
+
 
             //saercher-i
             naive_searcher = new NaiveSearcher();
@@ -227,7 +227,6 @@ namespace StringSearcher
                 label_Message.Text = "";
             }
         }
-
 
         private void radioButton_Naive_Search_CheckedChanged(object sender, EventArgs e)
         {

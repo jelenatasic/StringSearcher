@@ -72,7 +72,7 @@
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 17);
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 26;
             this.label1.Text = "Pattern:";
             // 
             // groupBox_AlgorithmSelection
@@ -138,7 +138,7 @@
             this.label2.Location = new System.Drawing.Point(11, 266);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 17);
-            this.label2.TabIndex = 5;
+            this.label2.TabIndex = 25;
             this.label2.Text = "Text:";
             // 
             // textBox_Text
@@ -156,7 +156,7 @@
             this.button_LoadText.Location = new System.Drawing.Point(988, 770);
             this.button_LoadText.Name = "button_LoadText";
             this.button_LoadText.Size = new System.Drawing.Size(140, 27);
-            this.button_LoadText.TabIndex = 6;
+            this.button_LoadText.TabIndex = 11;
             this.button_LoadText.Text = "Load Text";
             this.button_LoadText.UseVisualStyleBackColor = true;
             this.button_LoadText.Click += new System.EventHandler(this.button_LoadText_Click);
@@ -218,7 +218,7 @@
             this.label_Message.Location = new System.Drawing.Point(12, 775);
             this.label_Message.Name = "label_Message";
             this.label_Message.Size = new System.Drawing.Size(0, 17);
-            this.label_Message.TabIndex = 12;
+            this.label_Message.TabIndex = 24;
             this.label_Message.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // panel_RobinKarpSimulation
@@ -233,7 +233,7 @@
             this.panel_RobinKarpSimulation.Location = new System.Drawing.Point(478, 12);
             this.panel_RobinKarpSimulation.Name = "panel_RobinKarpSimulation";
             this.panel_RobinKarpSimulation.Size = new System.Drawing.Size(457, 211);
-            this.panel_RobinKarpSimulation.TabIndex = 15;
+            this.panel_RobinKarpSimulation.TabIndex = 28;
             // 
             // label7
             // 
@@ -250,7 +250,7 @@
             this.textBox_TextHash.Name = "textBox_TextHash";
             this.textBox_TextHash.ReadOnly = true;
             this.textBox_TextHash.Size = new System.Drawing.Size(100, 22);
-            this.textBox_TextHash.TabIndex = 20;
+            this.textBox_TextHash.TabIndex = 15;
             // 
             // textBox_PatternHash
             // 
@@ -258,7 +258,7 @@
             this.textBox_PatternHash.Name = "textBox_PatternHash";
             this.textBox_PatternHash.ReadOnly = true;
             this.textBox_PatternHash.Size = new System.Drawing.Size(100, 22);
-            this.textBox_PatternHash.TabIndex = 19;
+            this.textBox_PatternHash.TabIndex = 13;
             // 
             // richTextBox_TextHash
             // 
@@ -267,7 +267,7 @@
             this.richTextBox_TextHash.Name = "richTextBox_TextHash";
             this.richTextBox_TextHash.ReadOnly = true;
             this.richTextBox_TextHash.Size = new System.Drawing.Size(450, 56);
-            this.richTextBox_TextHash.TabIndex = 18;
+            this.richTextBox_TextHash.TabIndex = 16;
             this.richTextBox_TextHash.Text = "";
             // 
             // richTextBox_PatternHash
@@ -277,7 +277,7 @@
             this.richTextBox_PatternHash.Name = "richTextBox_PatternHash";
             this.richTextBox_PatternHash.ReadOnly = true;
             this.richTextBox_PatternHash.Size = new System.Drawing.Size(447, 56);
-            this.richTextBox_PatternHash.TabIndex = 17;
+            this.richTextBox_PatternHash.TabIndex = 14;
             this.richTextBox_PatternHash.Text = "";
             // 
             // label4
@@ -306,7 +306,7 @@
             this.panel_KnuthMorrisPrattSimulation.Location = new System.Drawing.Point(941, 12);
             this.panel_KnuthMorrisPrattSimulation.Name = "panel_KnuthMorrisPrattSimulation";
             this.panel_KnuthMorrisPrattSimulation.Size = new System.Drawing.Size(191, 211);
-            this.panel_KnuthMorrisPrattSimulation.TabIndex = 16;
+            this.panel_KnuthMorrisPrattSimulation.TabIndex = 29;
             // 
             // label5
             // 
@@ -325,6 +325,7 @@
             this.listBox_KMPStates.Name = "listBox_KMPStates";
             this.listBox_KMPStates.Size = new System.Drawing.Size(184, 148);
             this.listBox_KMPStates.TabIndex = 17;
+            this.listBox_KMPStates.TabStop = false;
             // 
             // label6
             // 
@@ -362,14 +363,14 @@
             this.label_RobinKarpSimulatoMessage.Location = new System.Drawing.Point(481, 226);
             this.label_RobinKarpSimulatoMessage.Name = "label_RobinKarpSimulatoMessage";
             this.label_RobinKarpSimulatoMessage.Size = new System.Drawing.Size(0, 17);
-            this.label_RobinKarpSimulatoMessage.TabIndex = 19;
+            this.label_RobinKarpSimulatoMessage.TabIndex = 27;
             // 
             // button_SetBlackText
             // 
             this.button_SetBlackText.Location = new System.Drawing.Point(842, 770);
             this.button_SetBlackText.Name = "button_SetBlackText";
             this.button_SetBlackText.Size = new System.Drawing.Size(140, 27);
-            this.button_SetBlackText.TabIndex = 20;
+            this.button_SetBlackText.TabIndex = 12;
             this.button_SetBlackText.Text = "Black Text";
             this.button_SetBlackText.UseVisualStyleBackColor = true;
             this.button_SetBlackText.Click += new System.EventHandler(this.button_SetBlackText_Click);
