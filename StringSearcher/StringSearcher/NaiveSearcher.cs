@@ -8,7 +8,8 @@ namespace StringSearcher
 {
     class NaiveSearcher : Searcher
     {
-        List<int> start_indexex;    //lista pamti pozicije unutar text-a na kojima pocinje pattern
+        //lista pamti pozicije unutar text-a na kojima pocinje pattern
+        List<int> start_indexex;    
 
         public NaiveSearcher()
         {
@@ -20,13 +21,18 @@ namespace StringSearcher
             if (text.Length < pattern.Length)
                 return start_indexex;
 
-            int pattern_ptr;        //brojac koji broji slova identicna u pattern-u i delu teksta koji se obradjuje
-            for (int text_ptr = 0; text_ptr <= text.Length - pattern.Length; text_ptr++)        //text_ptr cuva poziciju unutar teksta do koje smo dosli sa pretrazivanjem
+            //brojac koji broji slova identicna u pattern-u i delu teksta koji se obradjuje
+            int pattern_ptr;
+
+            //text_ptr cuva poziciju unutar teksta do koje smo dosli sa pretrazivanjem
+            for (int text_ptr = 0; text_ptr <= text.Length - pattern.Length; text_ptr++)        
             {
                 pattern_ptr = 0;
                 while (pattern_ptr < pattern.Length && pattern[pattern_ptr] == text[text_ptr + pattern_ptr])
                     pattern_ptr++;
-                if (pattern_ptr == pattern.Length)      //uslov koji je ispunjen kada smo pronasli pattern unutar teksta na poziciji text_ptr
+
+                //uslov koji je ispunjen kada smo pronasli pattern unutar teksta na poziciji text_ptr
+                if (pattern_ptr == pattern.Length)
                     start_indexex.Add(text_ptr);
             }
             return start_indexex;

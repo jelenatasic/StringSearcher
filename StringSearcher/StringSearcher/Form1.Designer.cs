@@ -44,14 +44,18 @@
             this.textBox_Pattern = new System.Windows.Forms.RichTextBox();
             this.label_Message = new System.Windows.Forms.Label();
             this.panel_RobinKarpSimulation = new System.Windows.Forms.Panel();
+            this.textBox_TextHash = new System.Windows.Forms.TextBox();
+            this.textBox_PatternHash = new System.Windows.Forms.TextBox();
             this.richTextBox_TextHash = new System.Windows.Forms.RichTextBox();
             this.richTextBox_PatternHash = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox_PatternHash = new System.Windows.Forms.TextBox();
-            this.textBox_TextHash = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.listBox_KMPStates = new System.Windows.Forms.ListBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.panel_RobinKarpSimulation.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -132,7 +136,7 @@
             // richTextBox_Text
             // 
             this.richTextBox_Text.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.richTextBox_Text.Location = new System.Drawing.Point(12, 304);
+            this.richTextBox_Text.Location = new System.Drawing.Point(8, 310);
             this.richTextBox_Text.Name = "richTextBox_Text";
             this.richTextBox_Text.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
             this.richTextBox_Text.Size = new System.Drawing.Size(1038, 454);
@@ -141,7 +145,7 @@
             // 
             // button_LoadText
             // 
-            this.button_LoadText.Location = new System.Drawing.Point(929, 764);
+            this.button_LoadText.Location = new System.Drawing.Point(929, 770);
             this.button_LoadText.Name = "button_LoadText";
             this.button_LoadText.Size = new System.Drawing.Size(121, 27);
             this.button_LoadText.TabIndex = 6;
@@ -172,7 +176,7 @@
             // 
             // button_SimulationNextStep
             // 
-            this.button_SimulationNextStep.Location = new System.Drawing.Point(498, 52);
+            this.button_SimulationNextStep.Location = new System.Drawing.Point(455, 52);
             this.button_SimulationNextStep.Name = "button_SimulationNextStep";
             this.button_SimulationNextStep.Size = new System.Drawing.Size(135, 23);
             this.button_SimulationNextStep.TabIndex = 9;
@@ -182,7 +186,7 @@
             // 
             // button_SimulationRestart
             // 
-            this.button_SimulationRestart.Location = new System.Drawing.Point(696, 52);
+            this.button_SimulationRestart.Location = new System.Drawing.Point(596, 52);
             this.button_SimulationRestart.Name = "button_SimulationRestart";
             this.button_SimulationRestart.Size = new System.Drawing.Size(135, 23);
             this.button_SimulationRestart.TabIndex = 10;
@@ -203,7 +207,7 @@
             // label_Message
             // 
             this.label_Message.AutoSize = true;
-            this.label_Message.Location = new System.Drawing.Point(119, 251);
+            this.label_Message.Location = new System.Drawing.Point(21, 233);
             this.label_Message.Name = "label_Message";
             this.label_Message.Size = new System.Drawing.Size(0, 17);
             this.label_Message.TabIndex = 12;
@@ -218,31 +222,45 @@
             this.panel_RobinKarpSimulation.Controls.Add(this.label3);
             this.panel_RobinKarpSimulation.Location = new System.Drawing.Point(314, 93);
             this.panel_RobinKarpSimulation.Name = "panel_RobinKarpSimulation";
-            this.panel_RobinKarpSimulation.Size = new System.Drawing.Size(736, 205);
+            this.panel_RobinKarpSimulation.Size = new System.Drawing.Size(527, 205);
             this.panel_RobinKarpSimulation.TabIndex = 15;
+            // 
+            // textBox_TextHash
+            // 
+            this.textBox_TextHash.Location = new System.Drawing.Point(150, 135);
+            this.textBox_TextHash.Name = "textBox_TextHash";
+            this.textBox_TextHash.Size = new System.Drawing.Size(100, 22);
+            this.textBox_TextHash.TabIndex = 20;
+            // 
+            // textBox_PatternHash
+            // 
+            this.textBox_PatternHash.Location = new System.Drawing.Point(150, 56);
+            this.textBox_PatternHash.Name = "textBox_PatternHash";
+            this.textBox_PatternHash.Size = new System.Drawing.Size(100, 22);
+            this.textBox_PatternHash.TabIndex = 19;
             // 
             // richTextBox_TextHash
             // 
             this.richTextBox_TextHash.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.richTextBox_TextHash.Location = new System.Drawing.Point(6, 140);
+            this.richTextBox_TextHash.Location = new System.Drawing.Point(6, 158);
             this.richTextBox_TextHash.Name = "richTextBox_TextHash";
-            this.richTextBox_TextHash.Size = new System.Drawing.Size(727, 56);
+            this.richTextBox_TextHash.Size = new System.Drawing.Size(513, 38);
             this.richTextBox_TextHash.TabIndex = 18;
             this.richTextBox_TextHash.Text = "";
             // 
             // richTextBox_PatternHash
             // 
             this.richTextBox_PatternHash.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.richTextBox_PatternHash.Location = new System.Drawing.Point(3, 43);
+            this.richTextBox_PatternHash.Location = new System.Drawing.Point(6, 84);
             this.richTextBox_PatternHash.Name = "richTextBox_PatternHash";
-            this.richTextBox_PatternHash.Size = new System.Drawing.Size(727, 56);
+            this.richTextBox_PatternHash.Size = new System.Drawing.Size(513, 45);
             this.richTextBox_PatternHash.TabIndex = 17;
             this.richTextBox_PatternHash.Text = "";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(3, 120);
+            this.label4.Location = new System.Drawing.Point(3, 138);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(131, 17);
             this.label4.TabIndex = 16;
@@ -251,31 +269,45 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 15);
+            this.label3.Location = new System.Drawing.Point(3, 64);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(92, 17);
             this.label3.TabIndex = 15;
             this.label3.Text = "pattern hash:";
             // 
-            // textBox_PatternHash
+            // panel1
             // 
-            this.textBox_PatternHash.Location = new System.Drawing.Point(184, 15);
-            this.textBox_PatternHash.Name = "textBox_PatternHash";
-            this.textBox_PatternHash.Size = new System.Drawing.Size(100, 22);
-            this.textBox_PatternHash.TabIndex = 19;
+            this.panel1.Controls.Add(this.listBox_KMPStates);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Location = new System.Drawing.Point(847, 22);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(203, 276);
+            this.panel1.TabIndex = 16;
             // 
-            // textBox_TextHash
+            // listBox_KMPStates
             // 
-            this.textBox_TextHash.Location = new System.Drawing.Point(184, 112);
-            this.textBox_TextHash.Name = "textBox_TextHash";
-            this.textBox_TextHash.Size = new System.Drawing.Size(100, 22);
-            this.textBox_TextHash.TabIndex = 20;
+            this.listBox_KMPStates.FormattingEnabled = true;
+            this.listBox_KMPStates.ItemHeight = 16;
+            this.listBox_KMPStates.Location = new System.Drawing.Point(6, 56);
+            this.listBox_KMPStates.Name = "listBox_KMPStates";
+            this.listBox_KMPStates.Size = new System.Drawing.Size(193, 212);
+            this.listBox_KMPStates.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 36);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(135, 17);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Backward transition:";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1062, 803);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel_RobinKarpSimulation);
             this.Controls.Add(this.label_Message);
             this.Controls.Add(this.textBox_Pattern);
@@ -297,6 +329,8 @@
             this.groupBox1.PerformLayout();
             this.panel_RobinKarpSimulation.ResumeLayout(false);
             this.panel_RobinKarpSimulation.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -326,6 +360,9 @@
         private System.Windows.Forms.RichTextBox richTextBox_PatternHash;
         private System.Windows.Forms.TextBox textBox_TextHash;
         private System.Windows.Forms.TextBox textBox_PatternHash;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ListBox listBox_KMPStates;
     }
 }
 

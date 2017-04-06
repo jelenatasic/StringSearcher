@@ -8,7 +8,8 @@ namespace StringSearcher
 {
     class RabinKarpSearcher : Searcher
     {
-        List<int> start_indexex;        //lista pamti pozicije unutar text-a na kojima pocinje pattern
+        //lista pamti pozicije unutar text-a na kojima pocinje pattern
+        List<int> start_indexex;
         private int pattern_hash;
         private int text_hash;
 

@@ -20,6 +20,7 @@ namespace StringSearcher
         Simulator simulator;
         NaiveSearcherSimulator naive_simulator;
         RabinKarpSearcherSimulator rabin_karp_simulator;
+        KnuthMorrisPrattSimulator knuth_morris_pratt_simulator;
 
         List<int> start_indexes;
 
@@ -30,6 +31,7 @@ namespace StringSearcher
             button_SimulationStart.Visible = false;
             button_SimulationNextStep.Visible = false;
             button_SimulationRestart.Visible = false;
+           // panel_RobinKarpSimulation.Visible = false;
 
             //saercher-i
             naive_searcher = new NaiveSearcher();
@@ -39,6 +41,7 @@ namespace StringSearcher
             //simulatori
             naive_simulator = new NaiveSearcherSimulator(textBox_Pattern, richTextBox_Text);
             rabin_karp_simulator = new RabinKarpSearcherSimulator(textBox_Pattern, richTextBox_Text, richTextBox_PatternHash, richTextBox_TextHash, textBox_PatternHash, textBox_TextHash);
+            knuth_morris_pratt_simulator = new KnuthMorrisPrattSimulator(textBox_Pattern, richTextBox_Text, listBox_KMPStates);
 
             start_indexes = new List<int>();
         }
@@ -61,8 +64,8 @@ namespace StringSearcher
             else
                 if (rabin_karp)
                     simulator = (Simulator)rabin_karp_simulator;
-               //else
-                    //simulator = (Simulator)knuth_morris_pratt_simulator;
+               else
+                    simulator = (Simulator)knuth_morris_pratt_simulator;
         }
 
         private void button_Search_Click(object sender, EventArgs e)
@@ -125,7 +128,6 @@ namespace StringSearcher
             button_SimulationStart.Visible = false;
             button_SimulationNextStep.Visible = true;
             button_SimulationRestart.Visible = true;
-
         }
 
         private void button_SimulationNextStep_Click(object sender, EventArgs e)

@@ -51,6 +51,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="KnuthMorrisPrattSearcher.cs" />
+    <Compile Include="KnuthMorrisPrattSimulator.cs" />
     <Compile Include="NaiveSearcher.cs" />
     <Compile Include="NaiveSearcherSimulator.cs" />
     <Compile Include="Program.cs" />
