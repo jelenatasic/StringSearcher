@@ -10,6 +10,7 @@ namespace StringSearcher
 {
     abstract class Simulator
     {
+        protected Label message_label;
         protected RichTextBox pattern_textbox;
         protected RichTextBox text_textbox;
         protected String text;

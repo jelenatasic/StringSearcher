@@ -13,10 +13,11 @@ namespace StringSearcher
         int text_position, match_counter;
 
 
-        public NaiveSearcherSimulator(RichTextBox pattern_textbox, RichTextBox text_textbox)
+        public NaiveSearcherSimulator(RichTextBox pattern_textbox, RichTextBox text_textbox, Label message_label)
         {
             this.pattern_textbox = pattern_textbox;
             this.text_textbox = text_textbox;
+            this.message_label = message_label;
             text_position = match_counter = 0;
         }
 
@@ -34,6 +35,7 @@ namespace StringSearcher
                     SetFrontColor(text_textbox, Color.Red, text_position, pattern.Length);
                     match_counter = 0;
                     text_position++;
+                    message_label.Text = "Match found!!!";
                     return;
                 }
 
@@ -45,6 +47,7 @@ namespace StringSearcher
                     match_counter++;
                     SetBackColor(pattern_textbox, Color.Tan, 0, match_counter);
                     SetBackColor(text_textbox, Color.Tan, text_position, match_counter);
+                    message_label.Text = "Pattern letter same as text letter!";
                 }
                 else
                 {
@@ -55,6 +58,7 @@ namespace StringSearcher
                     //postavljamo vrednosti za naredni korak
                     match_counter = 0;
                     text_position++;
+                    message_label.Text = "Missmatch";
                 }
             }
         }

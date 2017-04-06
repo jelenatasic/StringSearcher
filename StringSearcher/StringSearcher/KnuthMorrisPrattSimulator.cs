@@ -18,11 +18,12 @@ namespace StringSearcher
         int current_state;
         int text_counter;
 
-        public KnuthMorrisPrattSimulator(RichTextBox pattern_textbox, RichTextBox text_textbox, ListBox listbox_states)
+        public KnuthMorrisPrattSimulator(RichTextBox pattern_textbox, RichTextBox text_textbox, ListBox listbox_states, Label message_label)
         {
             this.pattern_textbox = pattern_textbox;
             this.text_textbox = text_textbox;
             this.listbox_states = listbox_states;
+            this.message_label = message_label;
 
             backward_transition_states = new List<int>();
             generated_states = false;
@@ -49,6 +50,7 @@ namespace StringSearcher
             listbox_states.Items.Add("Current state: 1, next state: 0");
             generatetd_states_count = 2;
             current_state = 0;
+            message_label.Text = "Backward transition state generation.";
         }
 
         public override void NextStep()
@@ -62,6 +64,7 @@ namespace StringSearcher
                 GenerateBackwardTransitionState();
                 if (generatetd_states_count == pattern.Length + 1)
                     generated_states = true;
+                message_label.Text = "Backward transition state generation.";
                 return;
             }
             //nakon generisanja stanja sledi trazenje pattern-a u text-u
@@ -73,15 +76,18 @@ namespace StringSearcher
                     {
                         //prepoznat pattern u prethodnom koraku i vec je obojen u crveno
                         //sada odrediti novo stanje automata
+                        message_label.Text = "Final state, Backward transition performed!";
                         current_state = backward_transition_states[current_state];
                         SelectState(current_state);
                         //obojiti prepoznati prefiks
-                        SelectPartsOfPatternAndText(0, text_counter - current_state, current_state);
+                        if(current_state != 0)
+                            SelectPartsOfPatternAndText(0, text_counter - current_state, current_state);
                         return;
                     }
                     if (text[text_counter] == pattern[current_state])      
                     {
                         //foreward transition function
+                        message_label.Text = "Same letters! Forward transition.";
                         text_counter++;
                         current_state++;
                         //obelezavamo prepoznat prefiks
@@ -90,6 +96,7 @@ namespace StringSearcher
                         if (current_state == pattern.Length)
                         {
                             //prepoznat pattern - obojiti slova dela teksta crveno
+                            message_label.Text = "\nMatch Found!!!";
                             SetFrontColor(text_textbox, Color.Red, text_counter - pattern.Length, pattern.Length);
                         }
                         return;
@@ -98,11 +105,13 @@ namespace StringSearcher
                     {
                         //karakter pattern-a i text-a se razlikuju - backward transition function
                         current_state = backward_transition_states[current_state];
+                        message_label.Text = "Trying to expand found prefix!";
                     }
                     SelectPartsOfPatternAndText(0, text_counter - current_state, current_state);
                     SelectState(current_state);
                     if (current_state == 0)
                     {
+                        message_label.Text = "Letter missmatch!! State 0, read next text letter.";
                         text_counter++;
                     }
                 }

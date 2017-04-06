@@ -34,7 +34,8 @@ namespace StringSearcher
                                              RichTextBox pattern_hash_expression_textbox,
                                              RichTextBox text_hash_expression_textbox, 
                                              TextBox pattern_hash_textbox, 
-                                             TextBox text_hash_textbox)
+                                             TextBox text_hash_textbox,
+                                             Label message_label)
         {
             this.pattern_textbox = pattern_textbox;
             this.pattern_hash_textbox = pattern_hash_textbox;
@@ -42,7 +43,9 @@ namespace StringSearcher
 
             this.text_textbox = text_textbox;
             this.text_hash_textbox = text_hash_textbox;
-            this.text_hash_expression_textbox = text_hash_expression_textbox; 
+            this.text_hash_expression_textbox = text_hash_expression_textbox;
+
+            this.message_label = message_label;
         }
 
         /// <summary>
@@ -82,6 +85,8 @@ namespace StringSearcher
             text_hash_textbox.Text = text_hash.ToString();
             SetText(text_hash_expression_textbox, hash_text);
             SetBackColor(text_textbox, Color.Tan, text_counter, pattern.Length);
+
+            SetMessage();
             
             text_counter = 0;
         }
@@ -97,11 +102,14 @@ namespace StringSearcher
             SetBackColor(text_textbox, Color.White, text_counter, pattern.Length);
 
             if (pattern_hash != text_hash)
+            {
                 PatternMissmatch();
+                SetMessage();
+            }
             else
             {
                 //ako je hes sablona i hes dela teksta isti, proveravamo slovo po slovo da li su identicni
-                if (match_counter < pattern.Length) 
+                if (match_counter < pattern.Length)
                 {
                     if (pattern[match_counter] == text[text_counter + match_counter])
                     {
@@ -111,12 +119,15 @@ namespace StringSearcher
                         //obelezavamo deo sablona i deo teksta za koje smo utvrdili da su isti
                         SetBackColor(pattern_textbox, Color.Tan, 0, match_counter);
                         SetBackColor(text_textbox, Color.Tan, text_counter, match_counter);
+                        message_label.Text = "Pattern letter same as text letter!";
                     }
                     else
                     {
                         //deo teksta koji ima isti hes kao sablon, nije identican sablonu
                         match_counter = 0;
                         PatternMissmatch();
+                        message_label.Text = "Letter missmatch.";
+                        AddMessage();
                     }
                 }
                 else
@@ -126,6 +137,8 @@ namespace StringSearcher
                     //resetujemo brojac i prelazimo na ispitivanje preostalog teksta
                     match_counter = 0;
                     PatternMissmatch();
+                    message_label.Text = "Match found!!!";
+                    AddMessage();
                 }
             }                                                            
         }
@@ -146,6 +159,22 @@ namespace StringSearcher
             }
         }
 
+        private void SetMessage()
+        {
+                if (text_hash != pattern_hash)
+                    message_label.Text = "Missmatch. Pattern hash and text hash are different.";
+                else
+                    message_label.Text = "Potential match!";
+        }
+
+        private void AddMessage()
+        {
+            if (text_hash != pattern_hash)
+                message_label.Text += "\nMissmatch. Pattern hash and text hash are different.";
+            else
+                message_label.Text += "\nPotential match!";
+        }
+
         public override void Reset()
         {
             SetBackColor(pattern_textbox, Color.White, 0, pattern.Length);
@@ -159,6 +188,8 @@ namespace StringSearcher
             text_hash_textbox.Text = "";
             text = "";
             pattern = "";
+            text_counter = match_counter = 0;
+            hash_text = "";
         }
     }
 }

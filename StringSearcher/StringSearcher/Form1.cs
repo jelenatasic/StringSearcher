@@ -39,9 +39,9 @@ namespace StringSearcher
             knuth_morris_pratt_searcher = new KnuthMorrisPrattSearcher();
 
             //simulatori
-            naive_simulator = new NaiveSearcherSimulator(textBox_Pattern, richTextBox_Text);
-            rabin_karp_simulator = new RabinKarpSearcherSimulator(textBox_Pattern, richTextBox_Text, richTextBox_PatternHash, richTextBox_TextHash, textBox_PatternHash, textBox_TextHash);
-            knuth_morris_pratt_simulator = new KnuthMorrisPrattSimulator(textBox_Pattern, richTextBox_Text, listBox_KMPStates);
+            naive_simulator = new NaiveSearcherSimulator(textBox_Pattern, richTextBox_Text, label_Message);
+            rabin_karp_simulator = new RabinKarpSearcherSimulator(textBox_Pattern, richTextBox_Text, richTextBox_PatternHash, richTextBox_TextHash, textBox_PatternHash, textBox_TextHash, label_Message);
+            knuth_morris_pratt_simulator = new KnuthMorrisPrattSimulator(textBox_Pattern, richTextBox_Text, listBox_KMPStates, label_Message);
 
             start_indexes = new List<int>();
         }
