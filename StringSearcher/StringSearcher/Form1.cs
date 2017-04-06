@@ -18,7 +18,7 @@ namespace StringSearcher
         KnuthMorrisPrattSearcher knuth_morris_pratt_searcher;
 
         Simulator simulator;
-        NaiveSearcherSimulator naive_simulator;
+        NaiveSimulator naive_simulator;
         RabinKarpSearcherSimulator rabin_karp_simulator;
         KnuthMorrisPrattSimulator knuth_morris_pratt_simulator;
 
@@ -28,10 +28,14 @@ namespace StringSearcher
         {
             //komponente
             InitializeComponent();
+            
             button_SimulationStart.Visible = false;
             button_SimulationNextStep.Visible = false;
             button_SimulationRestart.Visible = false;
-           // panel_RobinKarpSimulation.Visible = false;
+
+            panel_RobinKarpSimulation.Visible = false;
+            panel_KnuthMorrisPrattSimulation.Visible = false;
+            
 
             //saercher-i
             naive_searcher = new NaiveSearcher();
@@ -39,9 +43,13 @@ namespace StringSearcher
             knuth_morris_pratt_searcher = new KnuthMorrisPrattSearcher();
 
             //simulatori
-            naive_simulator = new NaiveSearcherSimulator(textBox_Pattern, richTextBox_Text, label_Message);
-            rabin_karp_simulator = new RabinKarpSearcherSimulator(textBox_Pattern, richTextBox_Text, richTextBox_PatternHash, richTextBox_TextHash, textBox_PatternHash, textBox_TextHash, label_Message);
-            knuth_morris_pratt_simulator = new KnuthMorrisPrattSimulator(textBox_Pattern, richTextBox_Text, listBox_KMPStates, label_Message);
+            naive_simulator = new NaiveSimulator(textBox_Pattern, textBox_Text, label_RobinKarpSimulatoMessage);
+            rabin_karp_simulator = new RabinKarpSearcherSimulator(textBox_Pattern, textBox_Text, richTextBox_PatternHash, richTextBox_TextHash, textBox_PatternHash, textBox_TextHash, label_RobinKarpSimulatoMessage);
+            knuth_morris_pratt_simulator = new KnuthMorrisPrattSimulator(textBox_Pattern, textBox_Text, listBox_KMPStates, label_RobinKarpSimulatoMessage);
+
+            //default-ni searcher i simulator;
+            searcher = naive_searcher;
+            simulator = naive_simulator;
 
             start_indexes = new List<int>();
         }
@@ -70,18 +78,27 @@ namespace StringSearcher
 
         private void button_Search_Click(object sender, EventArgs e)
         {
+            if (textBox_Pattern.Text.Length > textBox_Text.Text.Length)
+            {
+                MessageBox.Show("Pattern must be shorter than text!!", "Error");
+                return;
+            }
+            if (textBox_Pattern.Text.Length == 0 || textBox_Text.Text.Length == 0)
+            {
+                MessageBox.Show("Please enter pattern and text!!", "Error");
+                return;
+            }
+
             SelectSeracher(radioButton_Naive_Search.Checked, radioButton_Rabin_Karp_Search.Checked, radioButton_Knuth_Morris_Pratt_Search.Checked);
 
-            start_indexes = searcher.Search(textBox_Pattern.Text, richTextBox_Text.Text);
-            richTextBox_Text.Select(0, richTextBox_Text.Text.Length);
-            richTextBox_Text.SelectionColor = Color.Black;
-            richTextBox_Text.Select(0, 0);
+            start_indexes = searcher.Search(textBox_Pattern.Text, textBox_Text.Text);
+            textBox_Text.Select(0, textBox_Text.Text.Length);
+            textBox_Text.SelectionColor = Color.Black;
 
             foreach (int index in start_indexes)
             {
-                richTextBox_Text.Select(index, textBox_Pattern.Text.Length);
-                richTextBox_Text.SelectionColor = Color.Red;
-                richTextBox_Text.Select(0, 0);
+                textBox_Text.Select(index, textBox_Pattern.Text.Length);
+                textBox_Text.SelectionColor = Color.Red;
             }
 
             string plural_or_not;
@@ -90,6 +107,7 @@ namespace StringSearcher
             else
                 plural_or_not = "es";
             label_Message.Text = "Found: " + start_indexes.Count.ToString() + " match"+plural_or_not;
+
             searcher.ClearIndexes();
             start_indexes.Clear();
         }
@@ -105,29 +123,64 @@ namespace StringSearcher
 
             if (file_dialog.ShowDialog() == DialogResult.OK)
             {
-                richTextBox_Text.Text = System.IO.File.ReadAllText(file_dialog.FileName);
+                textBox_Text.Text = System.IO.File.ReadAllText(file_dialog.FileName);
             }
 
-            richTextBox_Text.Select(0, richTextBox_Text.Text.Length);
-            richTextBox_Text.SelectionColor = Color.Black;
+            textBox_Text.Select(0, textBox_Text.Text.Length);
+            textBox_Text.SelectionColor = Color.Black;
         }
+
 
         private void button_SimulationStart_Click(object sender, EventArgs e)
         {
-            if (textBox_Pattern.Text.Length > richTextBox_Text.Text.Length)
+            if (textBox_Pattern.Text.Length > textBox_Text.Text.Length)
             {
                 MessageBox.Show("Pattern must be shorter than text!!","Error");
                 return;
             }
+            if (textBox_Pattern.Text.Length == 0 || textBox_Text.Text.Length==0)
+            {
+                MessageBox.Show("Please enter pattern and text!!", "Error");
+                return;
+            }
 
-            textBox_Pattern.ReadOnly = true;
-            richTextBox_Text.ReadOnly = true;
-            simulator.SetPatternAndText();
-            simulator.Prepare();
+            groupBox_AlgorithmSelection.Enabled = false;
+
+            checkBox_Simulation.Enabled = false;
 
             button_SimulationStart.Visible = false;
             button_SimulationNextStep.Visible = true;
             button_SimulationRestart.Visible = true;
+
+            button_SetBlackText.Visible = false;
+
+            textBox_Pattern.ReadOnly = true;
+            textBox_Text.ReadOnly = true;
+
+            label_Message.Text = "Simulation running. To exit simulation mode, press Restart.";
+
+            simulator.SetPatternAndText();
+            simulator.Prepare();
+        }
+
+        private void button_SimulationRestart_Click(object sender, EventArgs e)
+        {
+            groupBox_AlgorithmSelection.Enabled = true;
+
+            checkBox_Simulation.Enabled = true;
+
+            button_SimulationStart.Visible = true;
+            button_SimulationNextStep.Visible = false;
+            button_SimulationRestart.Visible = false;
+
+            button_SetBlackText.Visible = true;
+
+            textBox_Pattern.ReadOnly = false;
+            textBox_Text.ReadOnly = false;
+
+            label_Message.Text = "Simulation terminated.";
+            
+            simulator.Reset();
         }
 
         private void button_SimulationNextStep_Click(object sender, EventArgs e)
@@ -139,50 +192,86 @@ namespace StringSearcher
         {
             if (checkBox_Simulation.Checked)
             {
-                SelectSimulator(radioButton_Naive_Search.Checked, radioButton_Rabin_Karp_Search.Checked, radioButton_Knuth_Morris_Pratt_Search.Checked);
+                textBox_Text.Select(0, textBox_Text.Text.Length);
+                textBox_Text.SelectionColor = Color.Black;
+                if (radioButton_Naive_Search.Checked)
+                {
+                    panel_KnuthMorrisPrattSimulation.Visible = false;
+                    panel_RobinKarpSimulation.Visible = false;
+                }
+                else
+                    if (radioButton_Rabin_Karp_Search.Checked)
+                    {
+                        panel_KnuthMorrisPrattSimulation.Visible = false;
+                        panel_RobinKarpSimulation.Visible = true;
+                    }
+                    else
+                    {
+                        panel_KnuthMorrisPrattSimulation.Visible = true;
+                        panel_RobinKarpSimulation.Visible = false;
+                    }
+
                 button_Search.Visible = false;
                 button_SimulationStart.Visible = true;
-                label_Message.Text = "Please enter pattern and text before starting the simulation";
+                label_Message.Text = "Please enter pattern and text before starting the simulation. To start simulation press Start button.";
             }
             else
             {
+                groupBox_AlgorithmSelection.Enabled = true;
+                panel_KnuthMorrisPrattSimulation.Visible = false;
+                panel_RobinKarpSimulation.Visible = false;
+
                 button_Search.Visible = true;
                 button_SimulationStart.Visible = false;
-                label_Message.Visible = true;
+
                 label_Message.Text = "";
             }
         }
 
-        private void button_SimulationRestart_Click(object sender, EventArgs e)
-        {
-            button_SimulationStart.Visible = true;
-            label_Message.Text = "Please enter pattern and text before starting the simulation";
-            button_SimulationNextStep.Visible = false;
-            button_SimulationRestart.Visible = false;
-
-            textBox_Pattern.ReadOnly = false;
-            richTextBox_Text.ReadOnly = false;
-
-            simulator.Reset();
-        }
-
-
-        //u slucaju da se prilikom eventa pozivaju dva puta selekcija sim
-        //mozda ipak samo ClickEvent
 
         private void radioButton_Naive_Search_CheckedChanged(object sender, EventArgs e)
         {
-            SelectSimulator(radioButton_Naive_Search.Checked, radioButton_Rabin_Karp_Search.Checked, radioButton_Knuth_Morris_Pratt_Search.Checked);
+            if (radioButton_Naive_Search.Checked)
+            {
+                SelectSimulator(true, false, false);
+                if (checkBox_Simulation.Checked)
+                {
+                    panel_RobinKarpSimulation.Visible = false;
+                    panel_KnuthMorrisPrattSimulation.Visible = false;
+                }
+            }
         }
 
         private void radioButton_Rabin_Karp_Search_CheckedChanged(object sender, EventArgs e)
         {
-            SelectSimulator(radioButton_Naive_Search.Checked, radioButton_Rabin_Karp_Search.Checked, radioButton_Knuth_Morris_Pratt_Search.Checked);
+            if (radioButton_Rabin_Karp_Search.Checked)
+            {
+                SelectSimulator(false, true, false);
+                if (checkBox_Simulation.Checked)
+                {
+                    panel_KnuthMorrisPrattSimulation.Visible = false;
+                    panel_RobinKarpSimulation.Visible = true;
+                }
+            }
         }
 
         private void radioButton_Knuth_Morris_Pratt_Search_CheckedChanged(object sender, EventArgs e)
         {
-            SelectSimulator(radioButton_Naive_Search.Checked, radioButton_Rabin_Karp_Search.Checked, radioButton_Knuth_Morris_Pratt_Search.Checked);
+            if (radioButton_Knuth_Morris_Pratt_Search.Checked)
+            {
+                SelectSimulator(false, false, true);
+                if (checkBox_Simulation.Checked)
+                {
+                    panel_KnuthMorrisPrattSimulation.Visible = true;
+                    panel_RobinKarpSimulation.Visible = false;
+                }
+            }
+        }
+
+        private void button_SetBlackText_Click(object sender, EventArgs e)
+        {
+            textBox_Text.Select(0, textBox_Text.Text.Length);
+            textBox_Text.SelectionColor = Color.Black;
         }
     }
 }

@@ -53,7 +53,7 @@
     <Compile Include="KnuthMorrisPrattSearcher.cs" />
     <Compile Include="KnuthMorrisPrattSimulator.cs" />
     <Compile Include="NaiveSearcher.cs" />
-    <Compile Include="NaiveSearcherSimulator.cs" />
+    <Compile Include="NaiveSimulator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RabinKarpSearcher.cs" />

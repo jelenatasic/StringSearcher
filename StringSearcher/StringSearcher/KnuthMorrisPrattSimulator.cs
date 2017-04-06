@@ -41,6 +41,7 @@ namespace StringSearcher
             text = pattern = "";
             text_counter = current_state = generatetd_states_count = 0;
             generated_states = false;
+            message_label.Text = "";
         }
         public override void Prepare()
         {

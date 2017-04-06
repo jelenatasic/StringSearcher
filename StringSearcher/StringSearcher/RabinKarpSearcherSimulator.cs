@@ -190,6 +190,7 @@ namespace StringSearcher
             pattern = "";
             text_counter = match_counter = 0;
             hash_text = "";
+            message_label.Text = "";
         }
     }
 }

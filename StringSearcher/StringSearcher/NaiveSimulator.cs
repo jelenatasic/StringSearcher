@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace StringSearcher
 {
-    class NaiveSearcherSimulator : Simulator
+    class NaiveSimulator : Simulator
     {
         int text_position, match_counter;
 
 
-        public NaiveSearcherSimulator(RichTextBox pattern_textbox, RichTextBox text_textbox, Label message_label)
+        public NaiveSimulator(RichTextBox pattern_textbox, RichTextBox text_textbox, Label message_label)
         {
             this.pattern_textbox = pattern_textbox;
             this.text_textbox = text_textbox;
@@ -72,6 +72,7 @@ namespace StringSearcher
             text_position = match_counter = 0;
             text = "";
             pattern = "";
+            message_label.Text = "";
         }
 
         public override void Prepare()
